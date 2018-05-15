@@ -156,7 +156,7 @@ model.compile(loss='mse', optimizer='adam')
 history_object = model.fit_generator(train_generator, samples_per_epoch=len(X_train), validation_data=validation_generator, nb_val_samples = len(X_valid), nb_epoch=7, verbose=1)
 
 #Save the model
-model.save('model_simple_with_augmentation.h5')
+model.save('model.h5')
 
 #Plot the training and validation loss for each epoch
 #Source: UDACITY course videos
