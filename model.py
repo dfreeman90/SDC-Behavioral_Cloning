@@ -54,12 +54,11 @@ def flip_image(image, measure):
 
 #Translate images horizontally and vertically to help generalize
 def random_translate(image, measure):
-    #SOURCE: https://github.com/naokishibuya/car-behavioral-cloning/blob/master/utils.py
     dx = 100
-    dy = 10
+    dy = 15
     new_x = dx * (np.random.rand() - 0.5)
     new_y = dy * (np.random.rand() - 0.5)
-    measure += new_x * 0.002
+    measure += new_x * 0.003
     move = np.float32([[1, 0, new_x], [0, 1, new_y]])
     row, col = image.shape[:2]
     image = cv2.warpAffine(image, move, (col, row))
@@ -92,7 +91,7 @@ def alter_brightness(image):
     return image
 
 #Pipeline for augmenting the image
-def augment_image(image, measure, top = 0.35, bottom = 0.1, dims = (66, 200)):
+def augment_image(image, measure):
     image, measure = flip_image(image, measure)
     image, measure = random_translate(image, measure)
     image = shadow_image(image)
